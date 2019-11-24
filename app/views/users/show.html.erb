@@ -10,9 +10,9 @@
     <% if @user.questions.any? %>
       <h3>Questions (<%= @user.questions.count %>) </h3>
       <ol class="questions">
-        <%= render @user.questions %>
+        <%= render :partial => @questions %>
       </ol>
-      <%= will_paginate @user.questions %>
+      <%= will_paginate @questions %>
     <% end %>
   </div>
 </div>
