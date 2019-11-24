@@ -24,6 +24,9 @@
               Logged in as <strong><%= current_user.email %></strong>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+              <li><%= link_to "Home", '#' %></li> 
+              <li><%= link_to "Help", 'static_pages/help' %></li> 
+              <li><%= link_to "Mission", 'static_pages/mission' %></li> 
             <% else %>
               <li><%= link_to "Home", '#' %></li> 
               <li><%= link_to "Help", 'static_pages/help' %></li> 
