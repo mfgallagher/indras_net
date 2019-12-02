@@ -9,4 +9,8 @@ class User < ApplicationRecord
          :confirmable
          
 
+  def feed
+    Question.where("user_id = ?", id)
+  end
+  
 end

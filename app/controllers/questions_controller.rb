@@ -7,11 +7,15 @@ class QuestionsController < ApplicationController
       flash[:success] = "Question created! Check back for answers."
       redirect_to root_url
     else
+      @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
     end
   end 
   
   def destroy
+    @question.destroy
+    flash[:success] = "Micropost deleted"
+    redirect_to request.referrer || root_url
   end 
   
   
@@ -20,5 +24,7 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:content)
     end
+    
+    
     
 end
