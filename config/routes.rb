@@ -3,11 +3,11 @@ Rails.application.routes.draw do
              :path_names => {sign_in: "login", sign_out: "logout"} 
   
                      
-  get 'static_pages/help'
-  get 'static_pages/mission'
+  get "static_pages/help", to: "static_pages#help", as: "help"
+  get "static_pages/mission", to: "static_pages#mission", as: "mission"
   get '/users/sign_up'
   get '/users/login'
-  get 'users/id' => 'users#show'
+  get "/questions/view", to: "questions#view", as: "view"
   root 'static_pages#home'
   resources :users, only: [:show]
   resources :questions, only: [:create, :destroy]

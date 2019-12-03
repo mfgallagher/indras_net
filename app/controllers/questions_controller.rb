@@ -20,6 +20,9 @@ class QuestionsController < ApplicationController
     redirect_to request.referrer || root_url
   end 
   
+  def view
+  end
+  
   
   private
   
