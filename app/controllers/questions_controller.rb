@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :correct_user, only: :destroy
+  
   
   def create
     @question = current_user.questions.build(question_params)
@@ -25,6 +27,9 @@ class QuestionsController < ApplicationController
       params.require(:question).permit(:content)
     end
     
-    
+    def correct_user
+      @question = current_user.questions.find_by(id: params[:id])
+      redirect_to root_url if @question.nil?
+    end
     
 end
