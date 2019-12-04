@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy, :show]
   before_action :correct_user, only: :destroy
   
   
@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'static_pages/home'
+      render root_path
     end
   end 
   
@@ -20,7 +20,9 @@ class QuestionsController < ApplicationController
     redirect_to request.referrer || root_url
   end 
   
-  def view
+  def show
+    @question = question
+    @user = question.user
   end
   
   

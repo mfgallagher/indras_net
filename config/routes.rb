@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   get "static_pages/mission", to: "static_pages#mission", as: "mission"
   get '/users/sign_up'
   get '/users/login'
-  get "/questions/view", to: "questions#view", as: "view"
+  
   root 'static_pages#home'
   resources :users, only: [:show]
-  resources :questions, only: [:create, :destroy]
+  resources :questions, only: [:create, :destroy, :show]
+  resources :answers, only: [:create, :destroy]
 end 
