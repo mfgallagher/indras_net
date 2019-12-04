@@ -21,9 +21,13 @@ class QuestionsController < ApplicationController
   end 
   
   def show
-    @question = question
-    @user = question.user
+    @question = Question.find(params[:id])
+    @user = @question.user
   end
+  
+  def index
+  end
+
   
   
   private

@@ -7,3 +7,4 @@ user = User.find(1)
   content = Faker::Lorem.sentence(word_count: 50)
   user.questions.create!(content: content) 
 end
+
