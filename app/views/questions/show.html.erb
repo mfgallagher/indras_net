@@ -1,7 +1,15 @@
 <div class="row">
     <aside class="col-md-4">
       <section class="question">
-        <%= render :partial => @question %>
+        <%= render @question %>
       </section>
+      <section class="answer_form">
+        <%= render 'shared/answer_form' %>
+      </section>
+      <% if @question.answers.any? %>
+        <ol class="answers">
+          <%= render @question.answers%>
+        </ol>
+      <% end %>
     </aside>
 </div>

@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
- # before_action :authenticate_user!
+
   
-  def hello
-    render html: "hello, world!"
+  def home
+    if user_signed_in?
+      @question = current_user.questions.build
+      @answer = @question.answers.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
   end
   
 end

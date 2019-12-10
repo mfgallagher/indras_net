@@ -5,6 +5,7 @@ Rails.application.routes.draw do
                      
   get "static_pages/help", to: "static_pages#help", as: "help"
   get "static_pages/mission", to: "static_pages#mission", as: "mission"
+  post 'questions/:id' => 'answers#create'
   get '/users/sign_up'
   get '/users/login'
   
