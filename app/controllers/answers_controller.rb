@@ -3,9 +3,9 @@ class AnswersController < ApplicationController
   before_action :correct_user, only: :destroy
   
   def create
-    @question = Question.find(params[:id])
-    @user = @question.user
-    @answer = @question.answers.build
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.build(answer_params)
+    @answer.user= current_user
     if @answer.save
       flash[:success] = "Thanks for offering your input!"
       redirect_to root_url
