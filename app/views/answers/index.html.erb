@@ -1,0 +1,7 @@
+<% if @question.answers.any? %>
+  <h3>Answers (<%= @question.answers.count %>) </h3>
+  <ol class="answers">
+    <%= render :partial => @answers %>
+  </ol>
+  <%= will_paginate @answers %>
+<% end %>

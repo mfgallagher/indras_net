@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy, :show]
+  before_action :authenticate_user!, only: [:create, :destroy, :index, :show]
   before_action :correct_user, only: :destroy
   
   def create
@@ -27,7 +27,8 @@ class AnswersController < ApplicationController
   end
   
   def index
-    @answers = Answer.all
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers
   end
 
 

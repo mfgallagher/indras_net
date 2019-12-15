@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       @answer = @question.answers.build
       @feed_items = current_user.feed.paginate(page: params[:page])
    end
-
+    
+    
 
 end

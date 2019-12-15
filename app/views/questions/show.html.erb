@@ -1,17 +1,13 @@
-<div class="row">
+<div class="col-md-30">
     <aside class="col-md-4">
       <section class="question">
         <%= render @question %>
       </section>
+      <section class="answers">
+        <%= render @question.answers %>
+      </section>
       <section class="answer_form">
         <%= render 'shared/answer_form' %>
       </section>
-      <span class="answers">
-      <% if @question.answers.any? %>
-        <ol class="answers">
-          <%= render @question.answers %>
-        </ol>
-      <% end %>
-      </span>
     </aside>
 </div>
