@@ -6,10 +6,12 @@
       <section class="answer_form">
         <%= render 'shared/answer_form' %>
       </section>
+      <span class="answers">
       <% if @question.answers.any? %>
         <ol class="answers">
-          <%= render @question.answers%>
+          <%= render @question.answers %>
         </ol>
       <% end %>
+      </span>
     </aside>
 </div>

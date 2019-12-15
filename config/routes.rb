@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   resources :users, only: [:show]
   resources :questions, only: [:create, :destroy, :show, :index] do
-    resources :answers, only: [:create, :destroy]
+    resources :answers, only: [:create, :destroy, :show, :index]
   end
 end 

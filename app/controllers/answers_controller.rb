@@ -16,7 +16,19 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    @question.destroy
+    flash[:success] = "Micropost deleted"
+    redirect_to request.referrer || root_url
   end 
+  
+  def show
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers
+  end
+  
+  def index
+    @answers = Answer.all
+  end
 
 
 private
