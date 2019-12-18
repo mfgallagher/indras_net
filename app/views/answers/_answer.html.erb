@@ -1,12 +1,11 @@
-
-  <li id="answer-<%= answer.id %> " >
-      <span class="user"><%= link_to answer.user.email, answer.user %></span>
-      <span class="content"><%= answer.content %></span>
-      <span class="timestamp">
-        Posted <%= time_ago_in_words(answer.created_at) %> ago.
-        <% if current_user == answer.user %>
-          <%= link_to "delete", question_answer_path(@question) , method: :delete,
-                                        data: { confirm: "You sure?" } %>
-        <% end %>
-      </span>
-  </li>
+<li id="answer-<%= answer.id %> " >
+    <span class="user"><%= link_to answer.user.email, answer.user %></span>
+    <span class="content"><%= answer.content %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(answer.created_at) %> ago.
+      <% if current_user == answer.user %>
+        <%= link_to "delete", question_answer_path(@question) , method: :delete,
+                                      data: { confirm: "You sure?" } %>
+      <% end %>
+    </span>
+</li>

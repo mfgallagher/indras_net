@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
    def show
       @user = User.find(params[:id])
+      @community = @user.community
       @questions = @user.questions.paginate(page: params[:page])
       @question = current_user.questions.build
       @answer = @question.answers.build

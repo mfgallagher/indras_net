@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_15_185607) do
+ActiveRecord::Schema.define(version: 2019_12_15_214420) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 2019_12_15_185607) do
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id", "created_at"], name: "index_answers_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -45,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_185607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
+    t.boolean "has_community", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
