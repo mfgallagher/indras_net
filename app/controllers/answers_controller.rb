@@ -5,10 +5,11 @@ class AnswersController < ApplicationController
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
+    @answer.community = @question.community
     @answer.user= current_user
     if @answer.save
       flash[:success] = "Thanks for offering your input!"
-      redirect_to root_url
+      redirect_to @question
     else
       flash[:error] = "invalid answer"
       redirect_to root_url

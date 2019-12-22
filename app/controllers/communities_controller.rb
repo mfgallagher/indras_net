@@ -2,10 +2,11 @@ class CommunitiesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :show, :index]
   
   def create 
-    @community = current_user.community.build(community_params)
+    @communities = Community.all
+    @communities.build(community_params)
     if @community.save
       flash[:success] = "Community made!"
-      redirect_to root_url
+      redirect_to @communities
     else
       flash[:error] = "invalid Community name"
       redirect_to root_url
@@ -13,9 +14,10 @@ class CommunitiesController < ApplicationController
   end
   
   def show
-    @community = Community.find(params[:name])
-    @users = @community.users
-    @questions = @community.questions
+    @communities = Community.all
+   # @community = Community.find(params[:id])
+   # @users = @community.users
+  #  @questions = @community.questions
   end 
   
   def index

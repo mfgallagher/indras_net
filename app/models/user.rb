@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+  
   has_many :questions, dependent: :destroy
   has_many :answers, through: :questions, dependent: :destroy
-  belongs_to :community
+  has_many :community_users
+  has_many :communities, :through => :community_users
   
   
   # Include default devise modules. Others available are:

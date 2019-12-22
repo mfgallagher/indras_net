@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   
   def create
     @question = current_user.questions.build(question_params)
+    @question.community = Community.find(1)
     if @question.save
       flash[:success] = "Question created! Check back for answers."
       redirect_to root_url
@@ -13,7 +14,7 @@ class QuestionsController < ApplicationController
       render root_path
     end
   end 
-  
+
   def destroy
     @question.destroy
     flash[:success] = "Micropost deleted"
