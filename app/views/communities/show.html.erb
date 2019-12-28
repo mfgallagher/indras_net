@@ -1,12 +1,23 @@
 <div class="row">
   <aside class="col-md-4">
-    <section class="communities">
+    <section class="community">
       <h1>
-        <%= render @communities %>
+        <%= render @community %>
       </h1>
     </section>
-     <section class="community_form">
-        <%= render 'shared/community_form'  %>
+    <% if @community.questions %>
+      <section class="questions">
+        <%= render @community.questions %>
+      </section>
+    <% else %>
+      <body>
+        <p>
+            Check back for questions related to this community!
+        </p> 
+      </body>
+    <% end %>
+    <section class="question_form">
+      <%= render 'shared/question_form' %>
     </section>
   </aside>
 </div>

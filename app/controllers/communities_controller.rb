@@ -3,10 +3,10 @@ class CommunitiesController < ApplicationController
   
   def create 
     @communities = Community.all
-    @communities.build(community_params)
+    @community = Community.new(community_params)
     if @community.save
       flash[:success] = "Community made!"
-      redirect_to @communities
+      redirect_to @community
     else
       flash[:error] = "invalid Community name"
       redirect_to root_url
@@ -15,16 +15,17 @@ class CommunitiesController < ApplicationController
   
   def show
     @communities = Community.all
-   # @community = Community.find(params[:id])
-   # @users = @community.users
-  #  @questions = @community.questions
+    @community = Community.find(params[:id])
+    @users = @community.users
+    @questions = @community.questions
   end 
   
   def index
     @communities = Community.all
+    @community = Community.new
   end
   
-  
+
   private
 
     def community_params

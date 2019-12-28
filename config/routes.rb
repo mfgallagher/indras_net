@@ -4,12 +4,13 @@ Rails.application.routes.draw do
                      
   get "static_pages/help", to: "static_pages#help", as: "help"
   get "static_pages/mission", to: "static_pages#mission", as: "mission"
-  get "communities", to: "communities#show", as: "communities"
+  get "communities", to: "communities#index", as: "communities"
+  post "communities/:id", to: "questions#create"
   get '/users/sign_up'
   get '/users/login'
   
   root 'static_pages#home'
-  resources :communities, only: [:create, :destroy, :show, :index]
+  resources :communities, only: [:create, :show, :index]
   resources :users, only: [:show]
   resources :questions, only: [:create, :destroy, :show, :index] do
     resources :answers, only: [:create, :destroy, :show, :index]

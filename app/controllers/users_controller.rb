@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       @question = current_user.questions.build
       @answer = @question.answers.build
       @feed_items = current_user.feed.paginate(page: params[:page])
-      @communities = Community.all
+      @communities = @user.communities
    end
    
    def destroy
