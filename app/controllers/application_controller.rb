@@ -7,5 +7,5 @@ class ApplicationController < ActionController::Base
       @communities = Community.all
     end
   end
-  
+ 
 end

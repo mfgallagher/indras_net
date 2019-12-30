@@ -4,6 +4,7 @@
       <h1>
         <%= render @community %>
       </h1>
+      <%= link_to "Join this community!", community_join_path %>
     </section>
     <% if @community.questions %>
       <section class="questions">
@@ -16,6 +17,9 @@
         </p> 
       </body>
     <% end %>
+    <section class="community_users">
+      <%= render @users %>
+    </section>
     <section class="question_form">
       <%= render 'shared/question_form' %>
     </section>
