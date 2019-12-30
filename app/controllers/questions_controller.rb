@@ -5,12 +5,15 @@ class QuestionsController < ApplicationController
   
   def create
     @user = current_user
-    @question = @user.questions.build(question_params)
-    if @user.communities.exists?
-      @question.community = @user.communities.find(1)
-    else
-      @question.community = Community.find(1)
-    end 
+    @community = Community.find(params[:id])
+    @question = Question.new(question_params)
+    @question.user = @user
+    @question.community = @community
+  #  if @user.communities.exists?
+  #    @question.community = @user.communities.find(1)
+  #  else
+  #    @question.community = Community.find(1)
+  #  end 
     if @question.save
       flash[:success] = "Question created! Check back for answers."
       redirect_to root_url
