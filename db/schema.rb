@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2019_12_28_000938) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "community_id"
+    t.index "\"user_id\", \"questions_id\", \"created_at\"", name: "index_answers_on_user_id_and_questions_id_and_created_at"
     t.index ["community_id"], name: "index_answers_on_community_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id", "created_at"], name: "index_answers_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -69,5 +69,8 @@ ActiveRecord::Schema.define(version: 2019_12_28_000938) do
   end
 
   add_foreign_key "answers", "communities"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "users"
   add_foreign_key "questions", "communities"
+  add_foreign_key "questions", "users"
 end

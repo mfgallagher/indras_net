@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  
+
   def home
     if user_signed_in?
       @question = current_user.questions.build
@@ -13,5 +13,5 @@ class StaticPagesController < ApplicationController
   end
 
   def mission
-  end 
+  end
 end

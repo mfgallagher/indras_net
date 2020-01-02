@@ -1,7 +1,7 @@
 class CommunitiesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :show, :index]
-  
-  def create 
+
+  def create
     @communities = Community.all
     @community = Community.new(community_params)
     if @community.save
@@ -12,20 +12,21 @@ class CommunitiesController < ApplicationController
       redirect_to root_url
     end
   end
-  
+
   def show
     @communities = Community.all
     @community = Community.find(params[:id])
     @users = @community.users
     @question = Question.new
     @questions = @community.questions
-  end 
-  
+    @question = Question.new
+  end
+
   def index
     @communities = Community.all
     @community = Community.new
   end
-  
+
 
   private
 
