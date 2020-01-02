@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/users/sign_up'
   get '/users/login'
   get "communities/:id/join", to: "community_users#new", as: "community_join"
-  post "communities/:id", to: "questions#create"
+  post "communities/:id", to: "communities#show"
   
   root 'static_pages#home'
   resources :communities, only: [:create, :show, :index]

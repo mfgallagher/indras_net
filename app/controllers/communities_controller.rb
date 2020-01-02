@@ -17,6 +17,7 @@ class CommunitiesController < ApplicationController
     @communities = Community.all
     @community = Community.find(params[:id])
     @users = @community.users
+    @question = Question.new
     @questions = @community.questions
   end 
   
