@@ -16,12 +16,12 @@
     <![endif]-->
   </head> 
   <body>
+    <% flash.each do |message_type, message| %>
+              <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
     <header class="navbar navbar-fixed-top navbar-inverse"> 
       <div class="container">
         <nav>
-          <% flash.each do |message_type, message| %>
-              <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-          <% end %>
           <ul class="nav navbar-nav navbar-right"> 
             <% if user_signed_in? %>
               Logged in as <strong><%= current_user.email %></strong>

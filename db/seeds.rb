@@ -9,36 +9,25 @@ User.create!(email: "michael.gallagher.0802@gmail.com",
 
 community = Community.create!(name: "Public")
 
-#user = User.find(1)
-#user.confirm
-
-
 # Generate a bunch of additional users
 20.times do |n|
-  email = "example-#{n+1}@indrasnet.com"
+  email = "example-#{n+1}@indrasexample.com"
   password = "password"
   User.create!(email: email,
              password: password,
              password_confirmation: password)
 end
 
-
-
 #Generate microposts for a subset of users.
 users = User.order(:created_at).take(6)
 50.times do
-  content = Faker::Lorem.sentence(word_count: 5)
-  users.each { |user| user.confirm }
-  users.each { |user| user.questions.create!(content: content) }
+  users.each { |user| 
+    user.confirm
+    content = Faker::Lorem.sentence(word_count: 50)
+    user.questions.create!(content: content,
+                            community: community )
+  }
 end 
 
 
-
-
-10.times do
-  content = Faker::Lorem.sentence(word_count: 50)
-  user.questions.create!(content: content,
-                          community: community ) 
-
-end
 
