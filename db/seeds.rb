@@ -9,8 +9,8 @@ User.create!(email: "michael.gallagher.0802@gmail.com",
 
 community = Community.create!(name: "Public")
 
-user = User.find(1)
-user.confirm
+#user = User.find(1)
+#user.confirm
 
 
 # Generate a bunch of additional users
@@ -28,7 +28,8 @@ end
 users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(word_count: 5)
-  users.each { |user| user.microposts.create!(content: content) }
+  users.each { |user| user.confirm }
+  users.each { |user| user.questions.create!(content: content) }
 end 
 
 
